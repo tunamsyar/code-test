@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 describe TransactionsController, type: :request do
-  let!(:asset) { create(:asset, :cash) }
-  let!(:asset1) { create(:asset, :gold) }
-  let!(:user) { create(:user) }
+  let!(:user) { create(:user, :with_cash_gold_balances) }
 
   context 'success' do
     before do
@@ -21,6 +19,7 @@ describe TransactionsController, type: :request do
                    amount: '10.00'
                  }
              }
+
       expect(json).to have_key('id')
       expect(json).to have_key('tref')
       expect(json).to have_key('amount')

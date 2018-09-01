@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 describe TransactionsController, type: :request do
-  let!(:cash) { create(:asset, :cash) }
-  let!(:user) { create(:user) }
+  let!(:user) { create(:user, :with_asset_balances) }
   let!(:transaction) { create(:transaction, user: user) }
   let!(:transaction1) { create(:transaction, user: user) }
   let!(:transaction2) { create(:transaction, user: user) }

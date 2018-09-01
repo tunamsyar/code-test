@@ -6,7 +6,7 @@ class Transaction < ApplicationRecord
 
   after_create :process_transaction
 
-  validate :user_cash_balance, if: -> { buy? || withdraw? }
+  validate :user_cash_balance, if: -> { buy? || withdraw? }, on: :create
   validate :user_asset_balance, if: :sell?, on: :create
 
   def process_transaction

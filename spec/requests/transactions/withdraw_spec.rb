@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 describe TransactionsController, type: :request do
-  let!(:asset) { create(:asset, :cash) }
-  let!(:user) { create(:user) }
+  let!(:user) { create(:user, :with_cash_balances) }
 
   context 'success' do
     before { user.cash_balance.update(amount: 100) }
