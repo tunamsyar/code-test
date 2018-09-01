@@ -11,4 +11,6 @@ Rails.application.routes.draw do
       post 'top_up', to: 'transactions#top_up'
     end
   end
+
+  resources :balances, only: [:index]
 end
