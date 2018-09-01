@@ -31,7 +31,7 @@ describe TransactionsController, type: :request do
   end
 
   context 'unsuccessful' do
-    before { user.cash_balance.update(amount: 0) }
+    before { user.asset_balances.last.update(amount: 0) }
     it 'should be unsuccessful' do
       post '/transactions/sell',
            headers: authenticated_header(user),

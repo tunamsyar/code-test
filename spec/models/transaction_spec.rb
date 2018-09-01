@@ -12,8 +12,6 @@ RSpec.describe Transaction, type: :model do
 
     subject { transaction.process_transaction }
 
-    it { should be_truthy }
-
     it 'should update asset balance' do
       subject
       user.balances.reload
@@ -53,4 +51,16 @@ RSpec.describe Transaction, type: :model do
       it { should match_array('Insufficient amount to sell') }
     end
   end
+
+  # describe '#reject_transaction' do
+  #   let!(:user) { create(:user, :with_cash_balances) }
+  #   let!(:transaction) { create(:transaction, trx_type: 'buy', user: user, status:'fail') }
+
+  #   subject { transaction.reject_transaction }
+
+  #   it '' do
+  #     subject
+  #     binding.pry
+  #   end
+  # end
 end

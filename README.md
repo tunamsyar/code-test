@@ -1,24 +1,15 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Sample Money App
+- Simple JSON API response money app with RailsAdmin
 
-Things you may want to cover:
+### After cloning repo
+1. run `bundle`
+2. `rails db:create db:migrate`
 
-* Ruby version
+### Test
+1. run `rspec`
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Admin
+1. RailsAdmin
+2. `localhost:3000/admin`
+3. Admin credential in `seed`
