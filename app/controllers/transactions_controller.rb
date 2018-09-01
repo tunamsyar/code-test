@@ -3,27 +3,31 @@ class TransactionsController < ApplicationController
 
   def index
     trxs = current_user.transactions
-    render json: trxs, status: :ok
+    render json: trxs, each_serializer: TransactionSerializer::Base, status: :ok
   end
 
   def buy
     trx = current_user.transactions.new(trx_params.merge(trx_type: 'buy'))
-    render json: trx, status: :created if trx.save
+    return render_error(trx.errors.messages, :bad_request) unless trx.save
+    render json: trx, serializer: TransactionSerializer::Base, status: :created
   end
 
   def sell
     trx = current_user.transactions.new(trx_params.merge(trx_type: 'sell'))
-    render json: trx, status: :created if trx.save
+    return render_error(trx.errors.messages, :bad_request) unless trx.save
+    render json: trx, serializer: TransactionSerializer::Base, status: :created
   end
 
   def withdraw
     trx = current_user.transactions.new(trx_params.merge(trx_type: 'withdraw'))
-    render json: trx, status: :created if trx.save
+    return render_error(trx.errors.messages, :bad_request) unless trx.save
+    render json: trx, serializer: TransactionSerializer::Base, status: :created
   end
 
   def top_up
     trx = current_user.transactions.new(trx_params.merge(trx_type: 'top_up'))
-    render json: trx, status: :created if trx.save
+    return render_error(trx.errors.messages, :bad_request) unless trx.save
+    render json: trx, serializer: TransactionSerializer::Base, status: :created
   end
 
   private
