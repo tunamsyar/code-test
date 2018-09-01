@@ -1,9 +1,10 @@
 FactoryBot.define do
   factory :user do
     sequence(:email) { |n| "user#{n}@mail.com" }
-    name { Faker::Name }
+    name { Faker::Name.name  }
     password_digest { Faker::Internet.password }
     country { 'my' }
+    role { 'user' }
 
     trait :with_cash_balances do
       after(:create) do |user|

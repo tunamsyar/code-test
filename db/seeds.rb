@@ -1,7 +1,23 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Asset.create(asset_type: 'gold', value_per_unit: 10)
+Asset.create(asset_type: 'cash', value_per_unit: 1)
+
+FactoryBot.create_list(:user, 5)
+
+# Admin
+
+User.skip_callback(:create, :after, :create_account_balance)
+User.create(email: 'admin@mail.com',
+            name: 'Admin',
+            role: 'admin',
+            password: 'password',
+            password_confirmation: 'password')
+User.set_callback(:create, :after, :create_account_balance)
+
+User.user.each do |user|
+  user.transactions
+      .create(tref: SecureRandom.hex(10),
+              trx_type: 'top_up',
+              amount: 500,
+              asset_id: Asset.find_by(asset_type: 'cash').id,
+              status: 'success')
+end
