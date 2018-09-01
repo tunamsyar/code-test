@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe UsersController, type: :request do
+  let!(:assets) { create_list(:asset, 5) }
   it '' do
     post '/users',
          params:
