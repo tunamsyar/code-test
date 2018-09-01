@@ -7,6 +7,7 @@ ruby '2.3.1'
 gem 'active_model_serializers'
 gem 'knock'
 gem 'rails', '~> 5.2.1'
+gem 'rails_admin', '~> 1.3'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server

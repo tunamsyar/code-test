@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :transactions
   has_many :balances
   enum country: %i[my th]
+  enum role: %i[user admin]
 
   after_create :create_account_balance
 
