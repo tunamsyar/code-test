@@ -1,0 +1,40 @@
+AllCops:
+  Include:
+    - Rakefile
+    - config.ru
+  Exclude:
+    - '**/Gemfile'
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+    - db/schema.rb
+    - db/migrate/*
+    - bin/*
+    - 'spec/fixtures/**/*'
+    - config/initializers/*.rb
+    - 'tmp/**/*'
+    - db/migrate/*
+    - bin/*
+    - config/*
+    - config/environments/*
+    - Guardfile
+  TargetRubyVersion: 2.3.3
+Style/Documentation:
+  Enabled: false
+Style/ClassVars:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Metrics/LineLength:
+  Max: 80
+Metrics/BlockLength:
+    - 'spec/requests/**/*.rb'
+    - 'spec/models/*.rb'
+    - 'spec/policies/*'
+    - 'spec/factories/*'
+Metrics/AbcSize:
+Metrics/MethodLength:
+Metrics/ClassLength:
+  Max: 200
+Style/Lambda:
+  Enabled: false
+
