@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_31_162705) do
+ActiveRecord::Schema.define(version: 2018_09_01_032929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assets", force: :cascade do |t|
+    t.string "asset_type"
+    t.integer "value_per_unit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "balances", force: :cascade do |t|
     t.bigint "user_id"
@@ -29,6 +36,9 @@ ActiveRecord::Schema.define(version: 2018_08_31_162705) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "asset_id"
+    t.integer "status", default: 0
+    t.index ["asset_id"], name: "index_transactions_on_asset_id"
     t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
@@ -42,5 +52,6 @@ ActiveRecord::Schema.define(version: 2018_08_31_162705) do
   end
 
   add_foreign_key "balances", "users"
+  add_foreign_key "transactions", "assets"
   add_foreign_key "transactions", "users"
 end
