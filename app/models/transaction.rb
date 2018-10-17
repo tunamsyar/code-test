@@ -14,12 +14,12 @@ class Transaction < ApplicationRecord
   end
 
   def user_cash_balance
-    return if user.cash_balance.amount > amount
+    return if user.cash_balance.amount >= amount
     errors.add(:base, 'Insufficient funds')
   end
 
   def user_asset_balance
-    return if user.balances.find_by(asset_id: asset_id).amount > amount
+    return if user.balances.find_by(asset_id: asset_id).amount >= amount
     errors.add(:base, 'Insufficient amount to sell')
   end
 end
