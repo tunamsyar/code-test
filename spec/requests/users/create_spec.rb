@@ -10,7 +10,7 @@ describe UsersController, type: :request do
               {
                 name: 'testname',
                 email: 'test@amil.com',
-                password_digest: 'password',
+                password: 'password',
                 country: 'my'
               }
           }
